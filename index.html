@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ButKut - Professional Editing Software</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background Animation */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #121212, #232323);
+            color: #ffffff;
+            animation: gradientShift 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background: linear-gradient(135deg, #121212, #232323); }
+            50% { background: linear-gradient(135deg, #232323, #121212); }
+            100% { background: linear-gradient(135deg, #121212, #333333); }
+        }
+
+        /* Container Styling */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background: rgba(25, 25, 25, 0.95);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.8);
+            transform: scale(0.95);
+            animation: containerScale 0.5s ease-out forwards, borderGlow 3s infinite alternate;
+            overflow: hidden;
+        }
+
+        @keyframes containerScale {
+            100% { transform: scale(1); }
+        }
+
+        @keyframes borderGlow {
+            0% { box-shadow: 0px 10px 30px rgba(255, 191, 0, 0.3); }
+            100% { box-shadow: 0px 10px 30px rgba(255, 191, 0, 0.7); }
+        }
+
+        /* Header Section */
+        header {
+            background: #1b1b1b;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3.2em;
+            color: #ffbf00;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 0px 0px 20px #ffbf00, 0px 0px 40px #ffbf00;
+            position: relative;
+            z-index: 1;
+            animation: textFlicker 2.5s ease-in-out infinite alternate;
+        }
+
+        header h1::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 191, 0, 0.1);
+            animation: headerGlow 1s ease-in-out infinite alternate;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #aaa;
+            margin-top: 8px;
+            opacity: 0.8;
+            text-shadow: 0px 0px 5px #888;
+            animation: fadeInText 1.5s ease-out forwards;
+        }
+
+        @keyframes headerGlow {
+            0% { opacity: 0; }
+            100% { opacity: 0.1; }
+        }
+
+        @keyframes textFlicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main Content Styling */
+        .content {
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #ffbf00;
+            text-shadow: 0px 0px 10px #ffbf00, 0px 0px 20px #ffbf00;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #ddd;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .feature {
+            background: linear-gradient(145deg, #282828, #1b1b1b);
+            padding: 25px;
+            border-radius: 12px;
+            width: 300px;
+            text-align: left;
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0px 12px 35px rgba(255, 191, 0, 0.3);
+        }
+
+        .feature h3 {
+            font-size: 1.4em;
+            color: #ffbf00;
+            position: relative;
+        }
+
+        .feature p {
+            font-size: 1em;
+            color: #ccc;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        /* Download Button */
+        .download-btn {
+            text-decoration: none;
+            display: inline-block;
+            padding: 18px 35px;
+            font-size: 1.3em;
+            background-color: #ffbf00;
+            color: #ffffff;
+            border-radius: 8px;
+            margin-top: 25px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0px 8px 20px rgba(255, 191, 0, 0.4);
+            animation: buttonPulse 3s infinite alternate;
+        }
+
+        .download-btn:hover {
+            background-color: #ff9500;
+            transform: scale(1.1);
+            box-shadow: 0px 10px 25px rgba(255, 149, 0, 0.6);
+        }
+
+        @keyframes buttonPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Tutorials Section */
+        .tutorial-section {
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #333, #222);
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .tutorial-section h2 {
+            color: #ffbf00;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 0px 0px 10px #ffbf00;
+        }
+
+        .tutorial-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .step {
+            background: #282828;
+            padding: 20px;
+            border-radius: 10px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            color: #ddd;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 30px rgba(255, 191, 0, 0.3);
+        }
+
+        .step-icon {
+            font-size: 2.5em;
+            color: #ffbf00;
+            margin-bottom: 10px;
+            animation: rotateIcon 1s infinite alternate;
+        }
+
+        @keyframes rotateIcon {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(10deg); }
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #888;
+            background: #121212;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>ButKut</h1>
+            <p>Your Premium Video Editing Experience</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h2>Welcome to ButKut</h2>
+            <p>Explore the ultimate editing software that allows you to create professional videos with ease. ButKut is designed to empower your creativity with advanced tools, 3D effects, animations, and user-friendly design.</p>
+
+            <!-- Features Section -->
+            <div class="features">
+                <div class="feature">
+                    <h3>Advanced Timeline Editing</h3>
+                    <p>Drag, drop, and cut clips effortlessly with our intuitive timeline.</p>
+                </div>
+                <div class="feature">
+                    <h3>Beautiful Filters & Effects</h3>
+                    <p>Customize your videos with stunning filters, transitions, and overlays.</p>
+                </div>
+                <div class="feature">
+                    <h3>Seamless Export Options</h3>
+                    <p>Save your work in various formats optimized for different platforms.</p>
+                </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="https://gofile.io/d/tUycrT" class="download-btn">Download ButKut Now</a>
+        </div>
+
+        <!-- Tutorials Section -->
+        <div class="tutorial-section">
+            <h2>ButKut Tutorials</h2>
+            <div class="tutorial-steps">
+                <div class="step">
+                    <div class="step-icon">📁</div>
+                    <h3>Step 1: Import Your Clips</h3>
+                    <p>Bring your footage into ButKut to start editing.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">✂️</div>
+                    <h3>Step 2: Trim & Arrange</h3>
+                    <p>Drag and drop clips onto the timeline and adjust their length.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🎨</div>
+                    <h3>Step 3: Add Effects</h3>
+                    <p>Enhance your video with stunning effects and animations.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">💾</div>
+                    <h3>Step 4: Export Video</h3>
+                    <p>Choose your export settings and save your work.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            © 2024 ButKut Software. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
